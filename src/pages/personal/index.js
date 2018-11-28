@@ -1,59 +1,77 @@
 import React,{ Component } from 'react';
-import request from '../../util/request'
+import request from '../../util/request';
+import { Button } from 'antd';
+import { getToken, getLoginName, removeLocalStorage } from '../../util/auth'
+import './index.scss'
 class Personal extends Component{
     constructor(){
         super()
         this.state={
             access_token:'',
-            loginname:''
+            loginname:'',
+            userData:{
+                avatar_url:'',
+                collect_topics:[],
+                create_at:'',
+                githubUsername:'',
+                loginname:'',
+                recent_replies:[],
+                recent_topics:[],
+                score:''
+            }
         }
     }
     componentWillMount(){
-        // setState异步函数
-        let token = localStorage.getItem('accessToken');
+        // setState是异步函数
+        let token = getToken();
+        this.setState({
+            loginname:getLoginName()
+        })
         this.setState({
             access_token:token
         })
     }
     componentDidMount(){
-        this.getPersonalData();
-        // console.log(this.state.access_token);
-    }
-    getPersonalData(){
-        request({
-            url:'/v1/accesstoken',
-            method:'post',
-            params:{
-                accesstoken:this.state.access_token
-            }
-        }).then(response=>{
-            console.log(response);
-            this.setState({
-                loginname:response.data.loginname
-            },function(){
-                this.getUserData();
-            })
-        },error=>{
-            console.log(error.response)
-        })
+        this.getUserData();
     }
     getUserData(){
         request({
             url:'/v1/user/'+this.state.loginname,
             method:'get',
         }).then(response=>{
-            console.log(response)
+            this.setState({
+                userData:response.data.data
+            })
         },error=>{
             console.log(error.response)
         })
     }
+    logout = ()=>{
+        removeLocalStorage();
+        this.props.history.push('/login');
+    }
     render(){
         return(
             <div id="peronal">
-                <p>
+                <p className='personalcenter'>
                     个人中心
                 </p>
-                {this.state.access_token}
+                <main className = 'main' >
+                    <img className='userimg' alt='头像' src={this.state.userData.avatar_url}/>
+                    <span className='loginname'>{this.state.loginname}</span>
+                    <div>
+                        <span>积分:{this.state.userData.score}</span>
+                        <span className='createat'>注册时间:{this.state.userData.create_at}</span>
+                    </div>
+                    <section>
+                        <ul className='contentlist'>
+                            <li className = 'contentli'>最近主题: {this.state.userData.recent_topics.length}</li>
+                            <li className = 'contentli'>最近回复: {this.state.userData.recent_replies.length}</li>
+                            <li className = 'contentli'>收藏主题: {this.state.userData.collect_topics.length}</li>
+                        </ul>
+                    </section>
+                </main>
+                <Button className='logoutbtn' type="primary" block onClick={this.logout}>退出登陆</Button>
             </div>
         )
     }

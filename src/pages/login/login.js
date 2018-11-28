@@ -1,6 +1,7 @@
 import React ,{ Component } from 'react';
-import {Button,Input} from 'antd';
+import { Button,Input } from 'antd';
 import request from '../../util/request';
+import { setToken, setLoginName } from '../../util/auth';
 
 import './login.scss'
 class Login extends Component{
@@ -21,11 +22,11 @@ class Login extends Component{
             }
         }).then(response=>{
             console.log(response);
-            console.log(this.state.access_token)
-            localStorage.setItem('accessToken',this.state.access_token);
+            setToken(this.state.access_token);
+            setLoginName(response.data.loginname);
             this.props.history.push('/personal');
         },error=>{
-            console.log(error.response)
+            //console.log(error.response)
             alert(error.response.data.error_msg)
         })
     }
