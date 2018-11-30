@@ -9,8 +9,18 @@ server.interceptors.request.use({
 
 })
 //拦截响应
-server.interceptors.response.use({
-
-})
+server.interceptors.response.use(
+    response=>{
+        console.log(response);
+        return response;
+    },
+    error=>{
+        console.log(error.response);
+        // if(error.response.status === 403){
+        //     alert(error.response.data.error_message);
+        // }
+        return error.response;
+    }
+)
 
 export default server;

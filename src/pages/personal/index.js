@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import request from '../../util/request';
 import { Button } from 'antd';
 import { getToken, getLoginName, removeLocalStorage } from '../../util/auth'
+import Nav from '../../components/BottomNav';
 import './index.scss'
 class Personal extends Component{
     constructor(){
@@ -39,11 +40,12 @@ class Personal extends Component{
             url:'/v1/user/'+this.state.loginname,
             method:'get',
         }).then(response=>{
+            //console.log(response)
             this.setState({
                 userData:response.data.data
             })
         },error=>{
-            console.log(error.response)
+            //console.log(error.response)
         })
     }
     logout = ()=>{
@@ -72,6 +74,7 @@ class Personal extends Component{
                     </section>
                 </main>
                 <Button className='logoutbtn' type="primary" block onClick={this.logout}>退出登陆</Button>
+                <Nav className='nav' />
             </div>
         )
     }

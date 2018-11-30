@@ -9,7 +9,7 @@ class Login extends Component{
         super()
         this.state={
             title:'登陆',
-            access_token:'',
+            access_token:'b497e46c-fddc-47d9-9af1-fba46e273016',
         }
     }
     login = ()=>{
@@ -18,13 +18,17 @@ class Login extends Component{
             url:'/v1/accesstoken',
             method:'post',
             data:{
-                accesstoken:this.state.access_token
+                accesstoken:this.state.access_token.trim()
             }
         }).then(response=>{
             console.log(response);
-            setToken(this.state.access_token);
-            setLoginName(response.data.loginname);
-            this.props.history.push('/personal');
+            if(response.status === 200){
+                setToken(this.state.access_token);
+                setLoginName(response.data.loginname);
+                this.props.history.push('/personal');
+            }else{
+                alert(response.data.error_msg);
+            }
         },error=>{
             //console.log(error.response)
             alert(error.response.data.error_msg)
