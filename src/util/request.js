@@ -11,7 +11,7 @@ server.interceptors.request.use({
 //拦截响应
 server.interceptors.response.use(
     response=>{
-        console.log(response);
+        //console.log(response);
         return response;
     },
     error=>{

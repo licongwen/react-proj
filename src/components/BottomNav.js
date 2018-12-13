@@ -10,8 +10,6 @@ export default class BottomNav extends Component{
         }
     }
     NavClick(item,index){
-        console.log(item,index);
-        console.log(this)
         if(index === 0){
             createhashhistory.push('/home');
         }else if(index === 1){

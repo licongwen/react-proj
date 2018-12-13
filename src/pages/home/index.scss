@@ -1,0 +1,36 @@
+#home{
+    .title{
+        font-size: 18px;
+        color: #fff;
+        height: 6vh;
+        line-height: 6vh;
+        background-color: #1890ff;
+        margin: 0;
+    }
+    #nav{
+        position: absolute;
+        bottom: -5px;
+    }
+    .content{
+        height: calc(100vh - 6vh);
+        // overflow: scroll;
+    }
+    .list_title>span{
+		background-color:#009688;
+		color:#fff;
+		padding: 0.2rem;
+		border-radius: 0.2rem;
+	}
+	.list_title>h3{
+		display: inline;
+		font-weight: 700;
+    }
+    .ant-tabs-bar{
+        margin: 0;
+    }
+    .clist{
+        height: calc(100vh - 6vh - 93px);
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}

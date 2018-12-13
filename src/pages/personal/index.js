@@ -63,7 +63,7 @@ class Personal extends Component{
                     <span className='loginname'>{this.state.loginname}</span>
                     <div>
                         <span>积分:{this.state.userData.score}</span>
-                        <span className='createat'>注册时间:{this.state.userData.create_at}</span>
+                        <span className='createat'>注册时间:{new Date(this.state.userData.create_at).toLocaleString()}</span>
                     </div>
                     <section>
                         <ul className='contentlist'>

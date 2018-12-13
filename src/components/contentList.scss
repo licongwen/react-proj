@@ -1,0 +1,26 @@
+.iteminfo{
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid #e6e6e6;
+    .avatarimg{
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: inline-block;
+    }
+    .list_title{
+        flex: 1;
+        text-align: left;
+        .tag{
+            display: inline-block;
+            margin-right:10px; 
+        }
+        .contenttitle{
+            display: inline-block;
+        }
+        .timer{
+            margin-top: 10px;
+        }
+    }
+}
