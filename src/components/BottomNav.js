@@ -13,7 +13,7 @@ export default class BottomNav extends Component{
         if(index === 0){
             createhashhistory.push('/home');
         }else if(index === 1){
-            
+            createhashhistory.push('/subscribe');
         }else if(index === 2){
 
         }else if(index === 3){

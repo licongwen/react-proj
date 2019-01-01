@@ -21,6 +21,12 @@
         }
         .timer{
             margin-top: 10px;
+            .contentvisitor,.contenttime{
+                display: inline-block;
+            }
+            .contentvisitor{
+                margin-right: 10px;
+            }
         }
     }
 }

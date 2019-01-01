@@ -35,9 +35,11 @@ class Login extends Component{
         })
     }
     handleInputChange(type,event){
-        this.setState({
-            access_token:event.target.value
-        })
+        // console.log(event);
+        // console.log(123)
+        // this.setState({
+        //     access_token:event.target.value
+        // })
     }
     render(){
         return (

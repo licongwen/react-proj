@@ -20,12 +20,12 @@ class Home extends Component{
         this.changeTab('all');
     }
     changeTab = (key)=>{
-        console.log(key)
+        //console.log(key)
         request({
             url:'/v1/topics?tab='+key,
             methods:'post'
         }).then(response=>{
-            console.log(response);
+            //console.log(response);
             this.setState({
                 allDate:response.data.data
             },()=>{

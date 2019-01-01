@@ -1,0 +1,39 @@
+#subscribe{
+    .title{
+        font-size: 18px;
+        color: #fff;
+        height: 6vh;
+        line-height: 6vh;
+        background-color: #1890ff;
+        margin: 0;
+    }
+    .content{
+        margin-top: 100px;
+        .title1,.title2{
+            padding: 0;
+            margin: 0 auto;
+            width: 80%;
+            font-size: 12px;
+            text-align: left;
+        }
+        .typeselect{
+            width: 80%;
+            margin: 10px auto;
+        }
+        .titleinput{
+            width: 80%;
+            margin: 10px auto;
+        }
+       .detailcontent{
+            width: 80%;
+            margin: 10px auto;
+        }
+        .upload{
+            width: 80%;
+            height: 36px;
+            margin: 10px auto;
+            background: #1890ff;
+            color: #fff;
+        }
+    }
+}
